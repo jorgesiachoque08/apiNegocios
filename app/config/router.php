@@ -1,16 +1,30 @@
 <?php
+
 use Phalcon\Http\Request;
 
 $request = new Request();
+
 //Controladores
 $AuthController = new AuthController();
 $PaisesController = new PaisesController();
+$EstadosUsuariosController = new EstadosUsuariosController();
+$EstadosTercerosController = new EstadosTercerosController();
+$EstadosEmpresasController = new EstadosEmpresasController();
+$FuncionesController = new FuncionesController();
+$TiposIdentificacionController = new TiposIdentificacionController();
+
+//Componentes
 $validador = new Validador();
 
 
-
+//Grupo de rutas
 include APP_PATH.'/grupoRouter/Auth.php';
 include APP_PATH.'/grupoRouter/Paises.php';
+include APP_PATH.'/grupoRouter/EstadosUsuarios.php';
+include APP_PATH.'/grupoRouter/EstadosTerceros.php';
+include APP_PATH.'/grupoRouter/EstadosEmpresas.php';
+include APP_PATH.'/grupoRouter/Funciones.php';
+include APP_PATH.'/grupoRouter/TipoIdentificacion.php';
 
 /* $app->get(
   '/api/listarUsuarios',
