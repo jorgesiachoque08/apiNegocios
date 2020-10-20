@@ -10,7 +10,7 @@ $tokenId    = base64_encode(random_bytes(32));
 $issuedAt   = time();
 $notBefore  = $issuedAt + 1;             //Adding 1 seconds
 $expire     = $notBefore + (60*60);            // Adding 10 seconds
-$serverName = 2;//$_SERVER['SERVER_NAME'];
+$serverName = $_SERVER['SERVER_NAME'];
 
 return new \Phalcon\Config([
     'database' => [

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Phalcon\Messages\Message;
 use Phalcon\Validation;
 use Phalcon\Validation\Validator\Email as EmailValidator;
 

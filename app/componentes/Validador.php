@@ -3,6 +3,7 @@ use Phalcon\Validation;
 use Phalcon\Validation\Validator\PresenceOf;
 use Phalcon\Validation\Validator\Digit as DigitValidator;
 use Phalcon\Validation\Validator\Email;
+use Phalcon\Validation\Validator\Date as DateValidator;
 use \Phalcon\Http\Response;
 
 class Validador {
@@ -12,6 +13,8 @@ class Validador {
     protected $msjCamposEnteros;
     protected $email;
     protected $msjCamposEmail;
+    protected $fechas;
+    protected $msjCamposFechas;
 
 
     public function Validando($params)
@@ -31,6 +34,10 @@ class Validador {
 
         if(isset($this->email) && isset($this->msjCamposEmail)){
             $this->validandoEmails($validador);
+        }
+
+        if(isset($this->fechas) && isset($this->msjCamposFechas)){
+            $this->validandoFechas($validador);
         }
 
         try {
@@ -87,6 +94,16 @@ class Validador {
             $this->getEmail(),
             new Email(
                 $this->getMsjCamposEmail()
+            )
+        );
+    }
+
+    public function validandoFechas($validador)
+    {
+        $validador->add(
+            $this->getFechas(),
+            new DateValidator(
+                $this->getMsjCamposFechas()
             )
         );
     }
@@ -151,4 +168,23 @@ class Validador {
         return $this->msjCamposEmail;
     }
 
+    public function setFechas($fechas)
+    {
+       $this->fechas = $fechas;
+    }
+
+    public function setMsjCamposFechas($msjCamposFechas)
+    {
+        $this->msjCamposFechas = $msjCamposFechas;
+    }
+
+    public function getFechas()
+    {
+        return $this->fechas;
+    }
+
+    public function getMsjCamposFechas()
+    {
+        return $this->msjCamposFechas;
+    }
 }

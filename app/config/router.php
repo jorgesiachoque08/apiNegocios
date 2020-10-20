@@ -12,6 +12,8 @@ $EstadosTercerosController = new EstadosTercerosController();
 $EstadosEmpresasController = new EstadosEmpresasController();
 $FuncionesController = new FuncionesController();
 $TiposIdentificacionController = new TiposIdentificacionController();
+$TercerosController = new TercerosController();
+$UsuariosController = new UsuariosController();
 
 //Componentes
 $validador = new Validador();
@@ -25,6 +27,8 @@ include APP_PATH.'/grupoRouter/EstadosTerceros.php';
 include APP_PATH.'/grupoRouter/EstadosEmpresas.php';
 include APP_PATH.'/grupoRouter/Funciones.php';
 include APP_PATH.'/grupoRouter/TipoIdentificacion.php';
+include APP_PATH.'/grupoRouter/Terceros.php';
+include APP_PATH.'/grupoRouter/Usuarios.php';
 
 /* $app->get(
   '/api/listarUsuarios',
