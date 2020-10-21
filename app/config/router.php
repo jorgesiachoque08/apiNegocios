@@ -14,6 +14,8 @@ $FuncionesController = new FuncionesController();
 $TiposIdentificacionController = new TiposIdentificacionController();
 $TercerosController = new TercerosController();
 $UsuariosController = new UsuariosController();
+$EmpresasController = new EmpresasController();
+$EstadosEuController = new EstadosEuController();
 
 //Componentes
 $validador = new Validador();
@@ -29,6 +31,8 @@ include APP_PATH.'/grupoRouter/Funciones.php';
 include APP_PATH.'/grupoRouter/TipoIdentificacion.php';
 include APP_PATH.'/grupoRouter/Terceros.php';
 include APP_PATH.'/grupoRouter/Usuarios.php';
+include APP_PATH.'/grupoRouter/Empresas.php';
+include APP_PATH.'/grupoRouter/EstadoEu.php';
 
 /* $app->get(
   '/api/listarUsuarios',

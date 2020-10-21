@@ -10,15 +10,24 @@ class AuthController extends Controller {
     {
         $Terceros = Terceros::findFirst(
             [
-                'conditions' => 'email= :email: OR numero_identificacion = :identificacion: ',
+                'conditions' => 'email= :email: OR (numero_identificacion = :identificacion: AND cod_tipo_identificacion = :cod_tipo_id: ) ',
                 'bind'       => [
                     'email' => $params["email"],
-                    'identificacion' => $params["identificacion"]
+                    'identificacion' => $params["identificacion"],
+                    'cod_tipo_id' => $params["cod_tipo_id"]
                 ]
             ]
         );
        
         if(!isset($Terceros)){
+            $Usuarios = Usuarios::findFirst(
+                [
+                    'conditions' => 'usuario= :usuario:',
+                    'bind'       => [
+                        'usuario' => $params["usuario"]
+                    ]
+                ]
+            );
             
             if (!isset($Usuarios)) {
                 $Terceros = new Terceros;
@@ -43,14 +52,6 @@ class AuthController extends Controller {
                     $Terceros->celular  = $params["celular"];
                 }
                 //SELECT * FROM usuarios WHERE usuario = 'jorgesiachoque08'
-                $Usuarios = Usuarios::findFirst(
-                    [
-                        'conditions' => 'usuario= :usuario:',
-                        'bind'       => [
-                            'usuario' => $params["usuario"]
-                        ]
-                    ]
-                );
                 
                 try {
                     $result = $Terceros->save();
